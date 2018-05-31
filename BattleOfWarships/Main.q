@@ -1,4 +1,5 @@
 
+ImagePath="C:\Users\ZJYC\Desktop\BattleOfWarships\Picture\"
 
 Function Init()
     InitialX=0
