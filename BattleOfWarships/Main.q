@@ -1,5 +1,5 @@
 
-ImagePath="C:\Users\ZJYC\Desktop\BattleOfWarships\Picture\"
+ImagePath="C:\Users\Zhaojingyangchun\Desktop\游戏辅助\2\"
 
 Function Init()
     InitialX=0
@@ -87,7 +87,9 @@ function ClickAndDelay(Offset,DelayBefore,DelayAfter)
     MoveTo FindImageintX+Offset,FindImageintY+Offset
     Delay DelayBefore*1000
     LeftClick 1
-    Delay DelayAfter*1000
+    Delay 500
+    MoveTo InitialX + 22, InitialY + 503
+    Delay DelayAfter * 1000
 end function
 
 function EnsureGameRuning()
@@ -164,8 +166,10 @@ function SelectPirates(Cnt)
 end function
 
 function WaitCarrierBack(WaitFor)
-    WaitCarrierBack=0
-    Call ShowCarrier()
+    WaitCarrierBack = 0
+    If FindImage("黄金加富尔", 3, 1, 0.8) = 0 Then   
+        Call ShowCarrier()
+    End If
     Delay 2000
     If FindImage("驻防中", WaitFor, 1, 0.7) = 1 Then 
         Call ClickAndDelay(0,1,2)
@@ -193,11 +197,11 @@ function MainTask()
             goto Restart
         End If
         
-        If AttackLv21Pirate() = 0 Then 
+        'If AttackLv21Pirate() = 0 Then 
             If AttackLv20Pirate(cnt) = 0 Then 
                     goto Restart
             End If
-        End If
+        'End If
         'MsgBox cnt
     next
 end function
@@ -430,6 +434,7 @@ End Function
 
 '参数为等待时长，单位小时
 Function TimePlan(Len)
+    TimePlanCnt = 0
     Counter = Len * 60'分钟
     if Counter <= 0 Then
         MsgBox "请给个合理的等待时长然后重启脚本"
@@ -442,11 +447,15 @@ Function TimePlan(Len)
     for Counter
         '海盗活动事件开始，自动启动打海盗
         If TimePlan_() = 1 Then 
-            Delay 10 * 60 * 1000
+            '如果在海盗活动期间启动，直接打海盗，不用等待
+            If TimePlanCnt > 0 Then
+                Delay 8 * 60 * 1000
+            End If
             exit function
         end if
         '没有海盗活动的话，延迟满Len（一般是2）个小时退出
-        delay 60*1000
+        Delay 60 * 1000
+        TimePlanCnt = TimePlanCnt + 1
     next
 end function
 '混合任务
@@ -466,28 +475,28 @@ Function AttackLv21Pirate()
     '确保我们在基地内部
     Call EnsureInBase()
     '找到飞机工厂 & 点击进去
-    If FindImage("飞机工厂", 2, 1, 0.8) = 1 Then 
-        Call ClickAndDelay(25, 2, 4)
+    If FindImage("飞机工厂", 10, 1, 0.8) = 1 Then 
+        Call ClickAndDelay(25, 1, 2)
         i = i + 1
     End If
     '找到鸭嘴兽轰炸机 & 点进去 
-    If FindImage("鸭嘴兽轰炸机", 2, 1, 0.8) = 1 Then 
-        Call ClickAndDelay(35, 2, 4)
+    If FindImage("鸭嘴兽轰炸机", 10, 1, 0.8) = 1 Then 
+        Call ClickAndDelay(35, 1, 2)
         i = i + 1
     End If
     '找到飞机升级按钮 & 点进去 
-    If FindImage("飞机升级按钮", 2, 1, 0.8) = 1 Then 
-        Call ClickAndDelay(10, 2, 4)
+    If FindImage("飞机升级按钮", 10, 1, 0.8) = 1 Then 
+        Call ClickAndDelay(10, 1, 2)
         i = i + 1
     End If
     '找到融合核弹 & 点进去 
-    If FindImage("融合核弹", 2, 1, 0.8) = 1 Then 
-        Call ClickAndDelay(10, 2, 4)
+    If FindImage("融合核弹", 10, 1, 0.8) = 1 Then 
+        Call ClickAndDelay(10, 1, 2)
         i = i + 1
     End If
     '前往海盗
-    If FindImage("升级飞机前往海盗", 2, 1, 0.8) = 1 Then 
-        Call ClickAndDelay(10, 2, 6)
+    If FindImage("升级飞机前往海盗", 10, 1, 0.8) = 1 Then 
+        Call ClickAndDelay(10, 1, 6)
         i = i + 1
     End If  
     '点击屏幕中间的海盗显示海盗信息
@@ -501,17 +510,18 @@ Function AttackLv21Pirate()
         Call ClickAndDelay(20, 2, 2)
     End If
     '确保海盗的等级为21
-    If FindImage("LV21-索马里", 2, 1, 0.9) = 1 Then 
+    If FindImage("LV21-索马里", 6, 0.5, 0.9) = 1 Then 
         AttackLv21Pirate = 1
     End If
     If AttackLv21Pirate = 1 Then 
         '点击攻击
-        If FindImage("攻击", 1, 0, 0.9) = 1 Then 
+        If FindImage("攻击", 10, 1, 0.9) = 1 Then 
             Call ClickAndDelay(5,1,2)
         End If
-        
-        Call ShowCarrier()
-        Delay 2000
+        '如果看不到黄金加富尔，需要下拉
+        If FindImage("黄金加富尔", 3, 1, 0.8) = 0 Then   
+            Call ShowCarrier()
+        End If
         If FindImage("驻防中", 600, 1, 0.7) = 1 Then 
             AttackLv21Pirate = 0
             Call ClickAndDelay(0,1,2)
@@ -538,23 +548,23 @@ Function RepairAllShips()
     i = 0
     Call EnsureInBase()
      
-    If FindImage("码头", 2, 1, 0.8) = 1 Then 
-        Call ClickAndDelay(25, 2, 4)
+    If FindImage("码头", 10, 1, 0.8) = 1 Then 
+        Call ClickAndDelay(25, 1, 1)
         i = i + 1
     End If
     
-    If FindImage("维修厂", 2, 1, 0.8) = 1 Then 
-        Call ClickAndDelay(5, 2, 4)
+    If FindImage("维修厂", 10, 1, 0.8) = 1 Then 
+        Call ClickAndDelay(5, 1, 1)
         i = i + 1
     End If
 
     If FindImage("维修当前队列", 300, 1, 0.8) = 1 Then 
-        Call ClickAndDelay(5, 2, 4)
+        Call ClickAndDelay(5, 1, 1)
         i = i + 1
     End If
 
-    If FindImage("维修", 2, 1, 0.8) = 1 Then 
-        Call ClickAndDelay(5, 2, 4)
+    If FindImage("维修", 10, 1, 0.8) = 1 Then 
+        Call ClickAndDelay(5, 1, 1)
         i = i + 1
     End If
 
