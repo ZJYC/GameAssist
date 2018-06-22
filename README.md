@@ -1,4 +1,6 @@
 # GameAssist
+---
+
 打游戏的时候，常常使用辅助，这里记录一些自己写的游戏辅助工具。
 
 《Battle Of Warships》中文名字是《帝国大海战》
@@ -12,16 +14,28 @@
 目前打21级海盗，一天可以打220+个，一天能打5.6M经验
 顺带着还能得一些紧急活动奖励至少720*3=2160金币
 
-配置：
-按键精灵2014
-天天模拟器v2.5.6
-720*1280-320dpi(高清竖屏)
-内存1024MB
-帧数60
-显卡渲染：极速+模式
-电脑分辨率：768*1366
 
-作者：ZJYC
+##配置
+----
+
+
+**按键精灵2014**
+
+**天天模拟器v2.5.6**
+
+**720*1280-320dpi(高清竖屏)**
+
+**内存1024MB**
+
+**帧数60**
+
+**显卡渲染：极速+模式**
+
+**电脑分辨率：768*1366**
+
+
+##最后
+---
 
 I've used scripts to help me playing this games.
 But Now,I have no time to play this game anymore,
@@ -31,9 +45,10 @@ If you konw something of programming, this script may help you.
 
 Thanks For All players of Server#90
 (R*W,EXP,Hoppi,MACC,沧海,Rougue!,Harley.D,Ny,GO~°JJO_POK°,Gator_,KRILL,,,,,etc)
-good bye.........
 
+Good bye.........
 
+###作者：**ZJYC**
 
 
 
