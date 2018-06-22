@@ -48,7 +48,9 @@ Thanks For All players of Server#90
 
 Good bye.........
 
-###作者：**ZJYC**
+##作者
+
+**ZJYC**
 
 
 
