@@ -15,7 +15,7 @@
 顺带着还能得一些紧急活动奖励至少720*3=2160金币
 
 
-##配置
+# 配置
 ----
 
 
@@ -34,7 +34,7 @@
 **电脑分辨率：768*1366**
 
 
-##最后
+# 最后
 ---
 
 I've used scripts to help me playing this games.
@@ -49,7 +49,7 @@ Thanks For All players of Server#90
 Good bye.........
 
 
-##作者
+# 作者
 ---
 
 **ZJYC**
