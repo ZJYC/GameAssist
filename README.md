@@ -44,7 +44,7 @@ I need to quit now.
 If you konw something of programming, this script may help you.
 
 Thanks For All players of Server#90
-(R*W,EXP,Hoppi,MACC,沧海,Rougue!,Harley.D,Ny,GO~°JJO_POK°,Gator_,KRILL,,,,,etc)
+(R*W,EXP,Hoppi,MACC,沧海,Rougue!,Harley.D,Ny,GO~°JJO_POK°,Gator_,Grunt4life,KRILL,,,,,etc)
 
 Good bye.........
 
